@@ -1,4 +1,4 @@
 category: Games
-requires: cygwin libSDL libSDL_mixer xorg-x11-base
+requires: cygwin libSDL12 libSDL_mixer libintl8
 sdesc: "SDL Tetris game"
 ldesc: "SDL Tetris game"

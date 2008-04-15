@@ -1,0 +1,18 @@
+DESCRIPTION="SDL Tetris game"
+HOMEPAGE="http://lgames.sourceforge.net/"
+SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+
+# <SDL.h> vs "sdl.h"
+USE_MANAGED_MOUNT=1
+
+DIFF_EXCLUDES="acinclude.m4"
+
+src_compile() {
+	cd ${S}
+	rm -f acinclude.m4
+	cygautoreconf
+
+	cd ${B}
+	cygconf --localstatedir=/var/games
+	cygmake
+}
