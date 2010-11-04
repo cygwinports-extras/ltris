@@ -1,0 +1,9 @@
+DESCRIPTION="SDL Tetris game"
+HOMEPAGE="http://lgames.sourceforge.net/"
+SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+PATCH_URI="1.0.15-vpath.patch"
+
+DISTCLEANFILES="acinclude.m4"
+
+CYGCONF_ARGS="--localstatedir=/var/games"
+LIBS="-lintl"

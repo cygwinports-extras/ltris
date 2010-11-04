@@ -1,0 +1,47 @@
+--- origsrc/ltris-1.0.15/Makefile.am	2010-09-20 12:26:05.000000000 -0500
++++ src/ltris-1.0.15/Makefile.am	2010-11-04 01:21:08.983549800 -0500
+@@ -16,6 +16,6 @@ AUTOMAKE_OPTIONS = foreign
+ # does not contain plus signs. :-)
+ ltris.desktop:
+ 	@sed -e "s+Icon=+Icon=$(datadir)/icons/ltris48.gif+" \
+-	< ltris.desktop.in > ltris.desktop
++	< $(srcdir)/ltris.desktop.in > ltris.desktop
+ 
+ ACLOCAL_AMFLAGS = -I m4
+--- origsrc/ltris-1.0.15/src/Makefile.am	2010-11-04 01:21:20.467057400 -0500
++++ src/ltris-1.0.15/src/Makefile.am	2010-11-04 01:12:35.000000000 -0500
+@@ -17,10 +17,10 @@ SUBDIRS = gfx sounds
+ 
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(inst_dir)
+-	$(INSTALL_DATA) figures $(DESTDIR)$(inst_dir)/figures
++	$(INSTALL_DATA) $(srcdir)/figures $(DESTDIR)$(inst_dir)/figures
+ 	$(mkinstalldirs) $(DESTDIR)$(hi_dir)
+ 	if ! test -f $(DESTDIR)$(hi_dir)/ltris.hscr; then \
+-	  $(INSTALL_DATA) --mode=666 empty.hscr $(DESTDIR)$(hi_dir)/ltris.hscr; \
++	  $(INSTALL_DATA) --mode=666 $(srcdir)/empty.hscr $(DESTDIR)$(hi_dir)/ltris.hscr; \
+ 	fi;
+ 
+ uninstall-local:
+--- origsrc/ltris-1.0.15/src/gfx/Makefile.am	2010-11-04 01:21:20.472057500 -0500
++++ src/ltris-1.0.15/src/gfx/Makefile.am	2010-11-04 01:12:35.000000000 -0500
+@@ -4,6 +4,6 @@ menuback.bmp quest.bmp blocks.bmp balloo
+ 
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(inst_dir)/gfx
+-	@for file in *.bmp; do\
+-	  $(INSTALL_DATA) $$file $(DESTDIR)$(inst_dir)/gfx/$$file;\
++	@for file in $(EXTRA_DIST); do\
++	  $(INSTALL_DATA) $(srcdir)/$$file $(DESTDIR)$(inst_dir)/gfx/$$file;\
+ 	done
+--- origsrc/ltris-1.0.15/src/sounds/Makefile.am	2010-11-04 01:21:20.477057600 -0500
++++ src/ltris-1.0.15/src/sounds/Makefile.am	2010-11-04 01:12:35.000000000 -0500
+@@ -3,6 +3,6 @@ excellent.wav nextlevel.wav
+ 
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(inst_dir)/sounds
+-	@for file in *.wav; do\
+-	  $(INSTALL_DATA) $$file $(DESTDIR)$(inst_dir)/sounds/$$file;\
++	@for file in $(EXTRA_DIST); do\
++	  $(INSTALL_DATA) $(srcdir)/$$file $(DESTDIR)$(inst_dir)/sounds/$$file;\
+ 	done

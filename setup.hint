@@ -1,4 +1,7 @@
 category: Games
-requires: libSDL12 libSDL_mixer libintl8
+requires: libintl8 libSDL1.2_0 libSDL_mixer1.2_0
 sdesc: "SDL Tetris game"
-ldesc: "SDL Tetris game"
+ldesc: "LTris as a tetris clone: differently shaped blocks are falling 
+down the rectangular playing field and can be moved sideways or rotated 
+by 90 degree units with the aim of building lines without gaps which 
+then disappear (causing any block above the deleted line to fall down)."
